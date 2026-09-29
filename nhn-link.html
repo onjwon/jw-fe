@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>정지원 포트폴리오 | 프론트엔드 개발자</title>
+<title>프론트엔드 개발자 포트폴리오</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -170,28 +170,28 @@ pre.code .c { color: var(--code-dim); }
 
 <header class="bar">
   <div class="bar-in">
-    <a class="bar-name" href="#top">정지원</a>
+    <a class="bar-name" href="#top">포트폴리오</a>
     <nav aria-label="프로젝트 바로가기">
       <a href="#ops">전사 웹사이트 운영</a>
       <a href="#admin">통합회원 어드민</a>
-      <a href="#mbk">MBK 관리자 시스템</a>
+      <a href="#client-admin">고객사 관리자 시스템</a>
       <a href="#signup">가입 폼 고도화</a>
-      <a href="#bmw">BMW ACE 3.1</a>
-      <a href="#contact">연락처</a>
+      <a href="#i18n">다국어 구조 개편</a>
+      <a href="#contact">마무리</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
   <section class="hero wrap">
-    <p class="hero-name">정지원, 프론트엔드 개발자</p>
-    <h1>고객 화면부터 관리자 시스템까지, 서비스를 책임지는 프론트엔드 개발자</h1>
-    <p class="hero-lede">브랜드와 본사몰 사이트의 마이페이지, 주문/배송 조회, 고객안내 공지 페이지, 포인트와 쿠폰 같은 고객 화면을 운영해왔고, 여러 관리자 시스템을 직접 설계해 만들었습니다. 반복되는 것을 공통 구조로 바꿔 유지보수하기 쉬운 서비스를 만드는 데 집중합니다.</p>
+    <p class="hero-name">프론트엔드 개발자 포트폴리오</p>
+    <h1>고객 화면부터 관리자 시스템까지, 운영 중인 서비스를 책임지는 프론트엔드 개발자</h1>
+    <p class="hero-lede">쇼핑몰과 브랜드 사이트의 마이페이지, 주문/배송 조회, 포인트와 쿠폰 같은 고객 화면을 운영해왔고, 여러 관리자 시스템을 직접 설계해 만들었습니다. 반복되는 것을 공통 구조로 바꿔 유지보수하기 쉬운 서비스를 만드는 데 집중합니다.</p>
     <dl class="hero-facts">
-      <div><dt>현재</dt><dd>팅크웨어 (2019.12 ~)</dd></div>
+      <div><dt>현재</dt><dd>IT 기업 재직 (2019.12 ~)</dd></div>
       <div><dt>총 경력</dt><dd>11년 7개월</dd></div>
       <div><dt>주력</dt><dd>React, Next.js</dd></div>
-      <div><dt>이메일</dt><dd><a href="mailto:dlsneptm@naver.com">dlsneptm@naver.com</a></dd></div>
+      <div><dt>주요 영역</dt><dd>고객 화면, 관리자 시스템</dd></div>
     </dl>
   </section>
 
@@ -220,7 +220,7 @@ pre.code .c { color: var(--code-dim); }
     <div class="p-body">
       <div class="story">
         <h3 class="problem">상황</h3>
-        <p>여러 채널을 동시에 운영하다 보니 유지보수 항목 등 채널마다 배포 일정이 달랐고, 다국어 페이지를 늘릴 때마다 같은 수정을 언어별로 반복해야 했습니다. 고객이 결과를 바로 확인하는 회원 화면이라 작은 오류도 곧바로 혼란으로 이어졌습니다.</p>
+        <p>세 채널을 동시에 운영하다 보니 채널마다 배포 일정이 달랐고, 다국어 페이지를 늘릴 때마다 같은 수정을 언어별로 반복해야 했습니다. 고객이 결과를 바로 확인하는 회원 화면이라 작은 오류도 곧바로 혼란으로 이어졌습니다.</p>
         <h3>한 일</h3>
         <ul>
           <li>채널별로 흩어진 배포 일정을 <strong>통합 작업 기준(Standard)</strong>으로 정리해 표준화</li>
@@ -283,7 +283,7 @@ pre.code .c { color: var(--code-dim); }
           <li>버튼·모달·폼 등 반복되는 UI를 <strong>공통 컴포넌트</strong>로 분리해 여러 관리자 화면에서 재사용</li>
           <li>사이트별 개별 페이지로 흩어져 있던 약관을 사이트·문서유형·버전 단위로 데이터화하고, 관리자가 에디터로 직접 등록·수정</li>
           <li>관리자의 모든 활동을 감사 로그로 남기고, 한 번에 전체를 불러오던 로그 목록을 <strong>페이지네이션</strong>으로 전환</li>
-          <li>Keycloak의 세션 만료 정책(idle 30분, max 1시간)을 서버 미들웨어와 클라이언트 타이머 양쪽에 똑같이 반영해 자동 로그아웃 구현</li>
+          <li>인증 서버(Keycloak)에 설정된 세션 만료 정책을 서버 미들웨어와 클라이언트 타이머 양쪽에 똑같이 반영해 자동 로그아웃 구현</li>
           <li>소셜·이메일·구 아이디로 흩어진 회원 데이터를 3가지 유형으로 나눠 통합 조회 가능하게 재구축</li>
         </ul>
         <h3>결과</h3>
@@ -325,10 +325,9 @@ pre.code .c { color: var(--code-dim); }
     </div>
   </article>
 
-  <!-- 3. MBK -->
-  <article class="project wrap" id="mbk">
+  <article class="project wrap" id="client-admin">
     <div class="p-head">
-      <h2>MBK(메르세데스-벤츠 고객사) 사이트 구축</h2>
+      <h2>수입차 브랜드 고객사 사이트 구축</h2>
       <span class="p-period">2025.02 ~ 2025.07</span>
     </div>
     <p class="p-sub">관리자 시스템을 제안하고 DB 설계부터 화면, 서버까지 직접 구축</p>
@@ -345,7 +344,7 @@ pre.code .c { color: var(--code-dim); }
           <li>계정 테이블에 권한 레벨을 두고, <strong>레벨 1은 글 작성만, 레벨 2는 전체 권한</strong>으로 구분</li>
           <li>로그인할 때 발급하는 <strong>JWT에 레벨을 담고</strong>, 수정·삭제·게시 API에서 <strong>서버가 레벨을 직접 확인</strong>해 권한이 없으면 거부</li>
           <li>화면에서 버튼을 숨기는 것만으로는 API를 직접 호출하면 우회되기 때문에, 최종 판단은 서버에 둠</li>
-          <li>로그인 5회 실패 시 계정 잠금, 비밀번호 30일 유효기간, 활동 로그 등 계정 보안 정책 구현</li>
+          <li>로그인 실패 시 계정 잠금, 비밀번호 유효기간, 활동 로그 등 계정 보안 정책 구현</li>
           <li>토큰은 HttpOnly 쿠키로 전달하고, 홈페이지 전체 구조부터 React 화면과 Node.js/Express 서버까지 전 구간 개발</li>
         </ul>
         <h3>결과</h3>
@@ -451,10 +450,9 @@ pre.code .c { color: var(--code-dim); }
     </div>
   </article>
 
-  <!-- 5. BMW -->
-  <article class="project wrap" id="bmw">
+  <article class="project wrap" id="i18n">
     <div class="p-head">
-      <h2>BMW ACE 3.1 개편</h2>
+      <h2>수입차 브랜드 고객사 사이트 개편</h2>
       <span class="p-period">2024.05 ~ 2024.12</span>
     </div>
     <p class="p-sub">하드코딩된 다국어 구조를 리팩토링하고 배포를 자동화</p>
@@ -519,19 +517,19 @@ pre.code .c { color: var(--code-dim); }
   <section class="more wrap" aria-labelledby="more-title">
     <h2 id="more-title">그 밖의 경험</h2>
     <dl class="more-list">
-      <div><dt>EOS TISAX 대응<small>2026.01 ~ 진행 중</small></dt><dd>자동차 업계 정보보안 인증 요건에 맞춰 서버 구성요소(Apache, PHP, Ruby on Rails, MariaDB) 버전을 업그레이드. 기존·신규 버전을 병행 운영하며 트래픽을 점진적으로 옮겨 다운타임 없이 전환하고, 문제 시 즉시 롤백할 수 있게 설계</dd></div>
-      <div><dt>CMS FOTA 운영<small>2024.01 ~ 진행 중</small></dt><dd>펌웨어·PC뷰어 가오픈으로 서비스 기능을 검증·운영하고, 브랜드 채널 프로모션별 이벤트 페이지 작성과 출시 서비스 오픈 담당</dd></div>
+      <div><dt>보안 인증 대응 서버 전환<small>2026.01 ~ 진행 중</small></dt><dd>정보보안 인증 요건에 맞춰 운영 서버 구성요소의 버전을 업그레이드. 기존·신규 버전을 병행 운영하며 트래픽을 점진적으로 옮겨 다운타임 없이 전환하고, 문제 시 즉시 롤백할 수 있게 설계</dd></div>
+      <div><dt>펌웨어 업데이트 서비스 운영<small>2024.01 ~ 진행 중</small></dt><dd>펌웨어·PC뷰어 가오픈으로 서비스 기능을 검증·운영하고, 브랜드 채널 프로모션별 이벤트 페이지 작성과 출시 서비스 오픈 담당</dd></div>
       <div><dt>개발 PM 겸 프론트 개발<small>2023.10 ~ 2025.07</small></dt><dd>다수 이해관계자가 참여한 대규모 개편에서 시나리오와 마일스톤을 관리하고, 화면 흐름도(User Flow)와 개발 범위를 먼저 구체화해 기획과 개발 사이의 재작업을 줄임</dd></div>
-      <div><dt>O2O 플랫폼 신커머스<small>2021.01 ~ 2021.08, 서비스 종료</small></dt><dd>모바일 전용 바로서비스(바로픽업·바로장착·바로배송) 신규 페이지와 전기차 온/오프 특화 사전예약 페이지 제작, 앱 신규 오픈 QA</dd></div>
+      <div><dt>모바일 커머스 신규 서비스<small>2021.01 ~ 2021.08, 서비스 종료</small></dt><dd>모바일 전용 신규 서비스 페이지와 사전예약 페이지 제작, 앱 신규 오픈 QA</dd></div>
       <div><dt>통합멤버십 사이트 리뉴얼 (현 통합회원)<small>2020.07 ~ 2020.12</small></dt><dd>회원가입 절차 간소화 플로우 기획부터 프론트 개발, QA 시나리오 작성과 검증까지 담당</dd></div>
-      <div><dt>(주)컴텔<small>2014.04 ~ 2018.12</small></dt><dd>신제품 출시 페이지와 신규 웹페이지 UI 개발 (HTML, CSS, jQuery, JavaScript)</dd></div>
+      <div><dt>이전 직장<small>2014.04 ~ 2018.12</small></dt><dd>신제품 출시 페이지와 신규 웹페이지 UI 개발 (HTML, CSS, jQuery, JavaScript)</dd></div>
     </dl>
   </section>
 
   <section class="closing wrap" id="contact" aria-labelledby="closing-title">
-    <h2 id="closing-title">티켓링크에서 이어가고 싶은 일</h2>
-    <p>예매, 결제, 취소는 사용자가 가장 긴장하는 순간이고, 그 화면은 정확하게 동작해야 합니다. 고객이 직접 쓰는 화면과 운영자가 매일 쓰는 관리자 시스템을 모두 만들어온 경험으로, 티켓링크의 예매 서비스와 Admin·Seller 관리 시스템에 기여하고 싶습니다.</p>
-    <p class="contact">연락처 <a href="mailto:dlsneptm@naver.com">dlsneptm@naver.com</a></p>
+    <h2 id="closing-title">예매 서비스에서 이어가고 싶은 일</h2>
+    <p>예매, 결제, 취소는 사용자가 가장 긴장하는 순간이고, 그 화면은 정확하게 동작해야 합니다. 고객이 직접 쓰는 화면과 운영자가 매일 쓰는 관리자 시스템을 모두 만들어온 경험으로, 예매 서비스와 Admin·Seller 관리 시스템에 기여하고 싶습니다.</p>
+    <p class="contact">연락처와 회사 정보는 제출한 이력서에 있습니다.</p>
   </section>
 </main>
 </body>
