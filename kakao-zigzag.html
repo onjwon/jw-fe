@@ -145,13 +145,6 @@ pre.code .c { color: var(--code-dim); }
 .closing { padding-top: 80px; padding-bottom: 96px; }
 .closing p { max-width: 40em; font-size: 17px; margin: 18px 0 0; }
 .contact { margin-top: 36px; font-weight: 600; }
-.fit { padding-top: 64px; padding-bottom: 64px; border-bottom: 1px solid var(--line); }
-.fit h2 { font-size: 20px; margin: 0; color: var(--navy); }
-.fit-list { margin: 28px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px 48px; }
-.fit-list div { border-top: 2px solid var(--navy); padding-top: 14px; }
-.fit-list dt { font-weight: 600; color: var(--navy); }
-.fit-list dd { margin: 8px 0 0; color: var(--ink-soft); }
-.fit-list dd a { white-space: nowrap; font-size: 14px; }
 .ways { margin: 28px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 40px; }
 .ways div { border-top: 2px solid var(--navy); padding-top: 14px; }
 .ways dt { font-weight: 600; color: var(--navy); }
@@ -175,6 +168,25 @@ pre.code .c { color: var(--code-dim); }
   .fig-stack { position: static; }
   .project { break-inside: avoid-page; }
 }
+
+/* width alignment: text blocks span the full content width */
+.hero h1 { max-width: none; }
+.hero-lede, .flow-lede, .lead, .closing p, .also { max-width: none !important; }
+.problem-box, .result { max-width: none !important; }
+.hero-facts { max-width: none; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.hero-facts dd { white-space: nowrap; }
+@media (max-width: 860px) {
+  .hero-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-facts dd { white-space: normal; }
+}
+
+/* divider lines line up with the text edges */
+.wrap { width: min(968px, calc(100% - 2 * clamp(24px, 7vw, 96px))); max-width: none; margin-left: auto; margin-right: auto; padding-left: 0 !important; padding-right: 0 !important; }
+.bar-in { width: min(968px, calc(100% - 2 * clamp(24px, 7vw, 96px))); max-width: none; padding-left: 0; padding-right: 0; }
+@media (max-width: 520px) {
+  .wrap, .bar-in { width: calc(100% - 48px); }
+}
+.hero h1 { text-wrap: balance; }
 </style>
 </head>
 <body>
@@ -183,10 +195,9 @@ pre.code .c { color: var(--code-dim); }
   <div class="bar-in">
     <a class="bar-name" href="#top">포트폴리오</a>
     <nav aria-label="프로젝트 바로가기">
-      <a href="#fit">공고와 맞닿은 경험</a>
+      <a href="#ops">전사 웹사이트 운영</a>
       <a href="#admin">통합회원 어드민</a>
       <a href="#client-admin">고객사 관리자 시스템</a>
-      <a href="#ops">전사 웹사이트 운영</a>
       <a href="#signup">가입 폼 고도화</a>
       <a href="#i18n">다국어 구조 개편</a>
       <a href="#contact">마무리</a>
@@ -197,8 +208,8 @@ pre.code .c { color: var(--code-dim); }
 <main id="top">
   <section class="hero wrap">
     <p class="hero-name">프론트엔드 개발자 포트폴리오</p>
-    <h1>고객 화면과 운영 도구를 함께 만들고, 반복되는 요청은 구조로 줄여온 프론트엔드 개발자</h1>
-    <p class="hero-lede">쇼핑몰과 브랜드 사이트의 고객 화면을 운영하면서, 운영자가 매일 쓰는 관리자 시스템을 직접 설계해 만들어왔습니다. 수동으로 반복되던 권한 등록과 요청이 올 때마다 만들던 페이지를, 운영자가 직접 다룰 수 있는 구조로 바꾸는 일에 집중합니다.</p>
+    <h1>고객 화면부터 관리자 시스템까지, 운영 중인 서비스를 책임지는 프론트엔드 개발자</h1>
+    <p class="hero-lede">쇼핑몰과 브랜드 사이트의 마이페이지, 주문/배송 조회, 포인트와 쿠폰 같은 고객 화면을 운영해왔고, 여러 관리자 시스템을 직접 설계해 만들었습니다. 반복되는 작업은 공통 구조와 자동화로 바꿔, 유지보수하기 쉬운 서비스를 만드는 데 집중합니다.</p>
     <dl class="hero-facts">
       <div><dt>현재</dt><dd>IT 기업 재직 (2019.12 ~)</dd></div>
       <div><dt>총 경력</dt><dd>11년 7개월</dd></div>
@@ -218,36 +229,61 @@ pre.code .c { color: var(--code-dim); }
     </div>
   </section>
 
-  <section class="fit wrap" id="fit" aria-labelledby="fit-title">
-    <h2 id="fit-title">공고와 맞닿은 경험</h2>
-    <dl class="fit-list">
-      <div>
-        <dt>어드민·백오피스를 설계부터 운영까지</dt>
-        <dd>통합회원 어드민에서 Keycloak과 내부 DB의 권한을 로그인 시점에 자동으로 맞추고, 관리자 활동을 감사 로그로 남겼습니다. 고객사 사이트에서는 권한 레벨을 DB부터 설계하고 기능별 API에서 서버가 직접 검증하게 했고, 구축 이후 지금까지 운영하고 있습니다. 다른 고객사 사이트도 고객사 요청으로 관리자 페이지를 설계하고 있습니다. <a href="#admin">통합회원 어드민</a> · <a href="#client-admin">고객사 관리자 시스템</a></dd>
+  <!-- 1. 전사 웹사이트 -->
+  <article class="project wrap" id="ops">
+    <div class="p-head">
+      <h2>전사 웹사이트 운영 및 유지보수</h2>
+      <span class="p-period">2020.01 ~ 진행 중</span>
+    </div>
+    <p class="p-sub">브랜드 사이트, 쇼핑몰, 글로벌 채널의 고객 화면을 동시에 운영</p>
+    <ul class="p-meta">
+      <li class="role">운영·유지보수 담당</li>
+      <li>쇼핑몰</li><li>브랜드 사이트</li><li>글로벌 다국어</li><li>약관 페이지</li>
+    </ul>
+    <div class="p-body">
+      <div class="story">
+        <h3 class="problem">상황</h3>
+        <p>전사 웹 채널을 동시에 운영하다 보니 채널마다 배포 일정이 달랐고, 다국어 페이지를 늘릴 때마다 같은 수정을 언어별로 반복해야 했습니다. 고객이 결과를 바로 확인하는 회원 화면이라 작은 오류도 곧바로 혼란으로 이어졌습니다.</p>
+        <h3>한 일</h3>
+        <ul>
+          <li>채널별로 흩어진 배포 일정을 <strong>통합 작업 기준(Standard)</strong>으로 정리해 표준화</li>
+          <li>글로벌 홈페이지의 다국어 페이지에서 반복 요소를 <strong>컴포넌트 템플릿</strong>으로 만들어 수정 범위를 최소화</li>
+          <li>마이페이지(회원정보·배송지), 주문/배송 조회, 포인트·쿠폰, 회원 등급 표시를 유지보수하며 이슈마다 원인부터 파악해 개선</li>
+          <li>쇼핑몰 화면에 <strong>로딩 UI</strong>를 적용해 데이터를 불러오는 동안 진행 상태를 보여줌</li>
+          <li>브랜드·쇼핑몰·통합회원별 이용약관과 통합약관 페이지를 요청에 따라 제작·관리</li>
+        </ul>
+        <h3>결과</h3>
+        <p>언어가 늘어나도 반복 요소는 템플릿 한 곳만 고치면 되도록 바뀌었고, 세 채널의 배포가 하나의 기준 아래에서 진행되게 됐습니다.</p>
       </div>
-      <div>
-        <dt>요청 자체를 줄이는 구조</dt>
-        <dd>신규 조직마다 수동으로 하던 권한 등록을 자동 매칭으로 없앴고, 요청이 올 때마다 만들던 약관 페이지는 관리자가 직접 등록·수정하는 구조로 설계했습니다. 다국어 페이지의 반복 요소는 템플릿으로 만들었습니다. <a href="#admin">통합회원 어드민</a> · <a href="#ops">전사 웹사이트</a></dd>
+      <div class="fig-stack">
+        <figure>
+          <div class="diagram">
+            <svg viewBox="0 0 560 250" role="img" aria-label="공통 템플릿과 작업 기준이 세 채널에 함께 적용되는 구조">
+              <defs>
+                <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-arrow" d="M0,0 L10,5 L0,10 z"/></marker>
+              </defs>
+              <rect class="d-key" x="150" y="16" width="260" height="62" rx="8"/>
+              <text class="d-t" x="280" y="42" text-anchor="middle">공통 컴포넌트 템플릿</text>
+              <text class="d-s" x="280" y="62" text-anchor="middle">통합 작업 기준(Standard)</text>
+              <path class="d-line" d="M280,78 V112 H90 V160" marker-end="url(#a1)"/>
+              <path class="d-line" d="M280,78 V160" marker-end="url(#a1)"/>
+              <path class="d-line" d="M280,112 H470 V160" marker-end="url(#a1)"/>
+              <rect class="d-box" x="20" y="164" width="140" height="66" rx="8"/>
+              <text class="d-t" x="90" y="192" text-anchor="middle">브랜드 사이트</text>
+              <text class="d-s" x="90" y="212" text-anchor="middle">UX 이슈 개선</text>
+              <rect class="d-box" x="210" y="164" width="140" height="66" rx="8"/>
+              <text class="d-t" x="280" y="192" text-anchor="middle">쇼핑몰</text>
+              <text class="d-s" x="280" y="212" text-anchor="middle">주문·포인트·로딩 UI</text>
+              <rect class="d-box" x="400" y="164" width="140" height="66" rx="8"/>
+              <text class="d-t" x="470" y="192" text-anchor="middle">글로벌 채널</text>
+              <text class="d-s" x="470" y="212" text-anchor="middle">다국어 페이지</text>
+            </svg>
+          </div>
+          <figcaption>반복 요소와 작업 기준을 한 곳에 두고 세 채널이 함께 쓰는 구조</figcaption>
+        </figure>
       </div>
-      <div>
-        <dt>문제를 먼저 발견하고 제안</dt>
-        <dd>고객사 사이트에서 관리자 시스템의 필요성을 판단해 도입을 제안했고, 여러 사이트에 흩어져 관리가 어렵던 약관을 한 곳에서 관리하도록 만들었습니다. <a href="#client-admin">고객사 관리자 시스템</a></dd>
-      </div>
-      <div>
-        <dt>데이터 정합성</dt>
-        <dd>가입 폼의 차량 정보 선택 조건식을 재설계해 데이터 초기화 오류를 고치고, 마이페이지에서 바꾼 값까지 저장되는지 검증했습니다. 클라이언트와 서버 사이의 데이터 형식(Boolean ↔ Y/N)도 맞췄습니다. <a href="#signup">가입 폼</a></dd>
-      </div>
-      <div>
-        <dt>커머스 고객 화면과 이벤트 지면</dt>
-        <dd>쇼핑몰의 마이페이지, 주문/배송 조회, 포인트·쿠폰, 회원 등급 화면을 운영했고, 브랜드 채널 프로모션별 이벤트 페이지를 만들어왔습니다. <a href="#ops">전사 웹사이트</a></dd>
-      </div>
-      <div>
-        <dt>여러 직군과의 조율</dt>
-        <dd>개발 PM을 겸하며 시나리오와 마일스톤을 관리하고, 화면 흐름도와 개발 범위를 먼저 구체화해 재작업을 줄였습니다. 인증 구조는 백엔드와 역할을 나눠 협업했습니다.</dd>
-      </div>
-    </dl>
-  </section>
-
+    </div>
+  </article>
 
   <!-- 2. 통합회원 어드민 -->
   <article class="project wrap" id="admin">
@@ -268,7 +304,7 @@ pre.code .c { color: var(--code-dim); }
         <ul>
           <li><strong>Keycloak(회원정보·그룹)과 내부 DB(메뉴별 권한)의 역할을 분리</strong>하고, 로그인 시점에 자동으로 Upsert해 권한이 매칭되도록 구조를 새로 만듦</li>
           <li>버튼·모달·폼 등 반복되는 UI를 <strong>공통 컴포넌트</strong>로 분리해 여러 관리자 화면에서 재사용</li>
-          <li>요청이 올 때마다 개발자가 사이트별 페이지로 만들어 관리하던 약관을 사이트·문서유형·버전 단위로 데이터화하고, <strong>관리자가 에디터로 직접 등록·수정</strong>하는 구조로 설계</li>
+          <li>사이트별 개별 페이지로 흩어져 있던 약관을 사이트·문서유형·버전 단위로 데이터화하고, 관리자가 에디터로 직접 등록·수정</li>
           <li>관리자의 모든 활동을 감사 로그로 남기고, 한 번에 전체를 불러오던 로그 목록을 <strong>페이지네이션</strong>으로 전환</li>
           <li>인증 서버(Keycloak)에 설정된 세션 만료 정책을 서버 미들웨어와 클라이언트 타이머 양쪽에 똑같이 반영해 자동 로그아웃 구현</li>
           <li>소셜·이메일·구 아이디로 흩어진 회원 데이터를 3가지 유형으로 나눠 통합 조회 가능하게 재구축</li>
@@ -312,7 +348,6 @@ pre.code .c { color: var(--code-dim); }
     </div>
   </article>
 
-  <!-- 3 -->
   <article class="project wrap" id="client-admin">
     <div class="p-head">
       <h2>수입차 브랜드 A 고객사 사이트 구축 및 운영</h2>
@@ -372,62 +407,6 @@ pre.code .c { color: var(--code-dim); }
             </svg>
           </div>
           <figcaption>권한 레벨을 토큰에 담고, 기능별 API에서 서버가 다시 확인</figcaption>
-        </figure>
-      </div>
-    </div>
-  </article>
-
-  <!-- 1. 전사 웹사이트 -->
-  <article class="project wrap" id="ops">
-    <div class="p-head">
-      <h2>전사 웹사이트 운영 및 유지보수</h2>
-      <span class="p-period">2020.01 ~ 진행 중</span>
-    </div>
-    <p class="p-sub">브랜드 사이트, 쇼핑몰, 글로벌 채널의 고객 화면을 동시에 운영</p>
-    <ul class="p-meta">
-      <li class="role">운영·유지보수 담당</li>
-      <li>쇼핑몰</li><li>브랜드 사이트</li><li>글로벌 다국어</li><li>약관 페이지</li>
-    </ul>
-    <div class="p-body">
-      <div class="story">
-        <h3 class="problem">상황</h3>
-        <p>세 채널을 동시에 운영하다 보니 채널마다 배포 일정이 달랐고, 다국어 페이지를 늘릴 때마다 같은 수정을 언어별로 반복해야 했습니다. 고객이 결과를 바로 확인하는 회원 화면이라 작은 오류도 곧바로 혼란으로 이어졌습니다.</p>
-        <h3>한 일</h3>
-        <ul>
-          <li>채널별로 흩어진 배포 일정을 <strong>통합 작업 기준(Standard)</strong>으로 정리해 표준화</li>
-          <li>글로벌 홈페이지의 다국어 페이지에서 반복 요소를 <strong>컴포넌트 템플릿</strong>으로 만들어 수정 범위를 최소화</li>
-          <li>마이페이지(회원정보·배송지), 주문/배송 조회, 포인트·쿠폰, 회원 등급 표시를 유지보수하며 이슈마다 원인부터 파악해 개선</li>
-          <li>쇼핑몰 화면에 <strong>로딩 UI</strong>를 적용해 데이터를 불러오는 동안 진행 상태를 보여줌</li>
-          <li>브랜드·쇼핑몰·통합회원별 이용약관과 통합약관 페이지를 요청에 따라 제작·관리</li>
-        </ul>
-        <h3>결과</h3>
-        <p>언어가 늘어나도 반복 요소는 템플릿 한 곳만 고치면 되도록 바뀌었고, 세 채널의 배포가 하나의 기준 아래에서 진행되게 됐습니다.</p>
-      </div>
-      <div class="fig-stack">
-        <figure>
-          <div class="diagram">
-            <svg viewBox="0 0 560 250" role="img" aria-label="공통 템플릿과 작업 기준이 세 채널에 함께 적용되는 구조">
-              <defs>
-                <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-arrow" d="M0,0 L10,5 L0,10 z"/></marker>
-              </defs>
-              <rect class="d-key" x="150" y="16" width="260" height="62" rx="8"/>
-              <text class="d-t" x="280" y="42" text-anchor="middle">공통 컴포넌트 템플릿</text>
-              <text class="d-s" x="280" y="62" text-anchor="middle">통합 작업 기준(Standard)</text>
-              <path class="d-line" d="M280,78 V112 H90 V160" marker-end="url(#a1)"/>
-              <path class="d-line" d="M280,78 V160" marker-end="url(#a1)"/>
-              <path class="d-line" d="M280,112 H470 V160" marker-end="url(#a1)"/>
-              <rect class="d-box" x="20" y="164" width="140" height="66" rx="8"/>
-              <text class="d-t" x="90" y="192" text-anchor="middle">브랜드 사이트</text>
-              <text class="d-s" x="90" y="212" text-anchor="middle">UX 이슈 개선</text>
-              <rect class="d-box" x="210" y="164" width="140" height="66" rx="8"/>
-              <text class="d-t" x="280" y="192" text-anchor="middle">쇼핑몰</text>
-              <text class="d-s" x="280" y="212" text-anchor="middle">주문·포인트·로딩 UI</text>
-              <rect class="d-box" x="400" y="164" width="140" height="66" rx="8"/>
-              <text class="d-t" x="470" y="192" text-anchor="middle">글로벌 채널</text>
-              <text class="d-s" x="470" y="212" text-anchor="middle">다국어 페이지</text>
-            </svg>
-          </div>
-          <figcaption>반복 요소와 작업 기준을 한 곳에 두고 세 채널이 함께 쓰는 구조</figcaption>
         </figure>
       </div>
     </div>
@@ -495,7 +474,6 @@ pre.code .c { color: var(--code-dim); }
     </div>
   </article>
 
-  <!-- 5 -->
   <article class="project wrap" id="i18n">
     <div class="p-head">
       <h2>수입차 브랜드 B 고객사 사이트 개편 및 운영</h2>
@@ -575,8 +553,22 @@ pre.code .c { color: var(--code-dim); }
   </section>
 
   <section class="closing wrap" id="contact" aria-labelledby="closing-title">
-    <h2 id="closing-title">이어가고 싶은 일</h2>
-    <p>고객이 보는 화면과 운영자가 쓰는 도구를 함께 만들며, 운영자가 개발 요청 없이 직접 처리할 수 있는 구조를 만들어왔습니다. 전시·콘텐츠 운영을 위한 어드민과 백오피스에서 이 경험을 이어가고, 반복되는 운영 요청을 구조로 줄이는 일에 기여하고 싶습니다.</p>
+    <h2 id="closing-title">일하는 방식</h2>
+    <dl class="ways">
+      <div>
+        <dt>반복되는 일은 구조로 바꿉니다</dt>
+        <dd>신규 조직마다 수동으로 하던 권한 등록은 로그인 시점 자동 매칭으로, 컴포넌트에 하드코딩된 다국어 텍스트는 언어별 JSON으로, 수동 배포는 빌드·배포 자동화로 바꿨습니다.</dd>
+      </div>
+      <div>
+        <dt>필요한 것은 먼저 제안합니다</dt>
+        <dd>고객사 사이트에서 관리자 시스템의 필요성을 판단해 도입을 제안했고, 여러 사이트에 흩어져 관리가 어렵던 약관은 한 곳에서 관리할 수 있도록 만들었습니다.</dd>
+      </div>
+      <div>
+        <dt>만든 뒤에도 운영까지 맡습니다</dt>
+        <dd>구축한 고객사 사이트들은 지금도 콘텐츠 교체와 펌웨어 버전 업데이트 등 운영을 이어가고 있고, 고객사 요청으로 관리자 페이지를 새로 설계하고 있습니다.</dd>
+      </div>
+    </dl>
+    <p>고객이 직접 쓰는 화면과 운영자가 매일 쓰는 관리자 시스템을 함께 다루는 팀에서, 이 방식으로 기여하고 싶습니다.</p>
     <p class="contact">연락처와 회사 정보는 제출한 이력서에 있습니다.</p>
   </section>
 </main>
